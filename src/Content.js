@@ -1,17 +1,15 @@
 import Book from './Book';
-import Form from './Form';
 
-
-export default function Content(state){
-    return `
-        <div id ="content">
-          <div>
-            ${Book(state.books[0])}
-            ${Book(state.books[1])}
-            ${Book(state.books[2])}
-            ${Book(state.books[3])}
-          </div>
-          ${Form()}
-        </div>
-    `;
+function mapBooks(books){
+    return books.map((book) => Book(book)).join('');
 }
+
+export default function Content(books){
+    return `
+    <div id="content">
+      ${mapBooks(books)}
+    </div>
+    
+  `;
+}
+
